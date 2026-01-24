@@ -12,7 +12,7 @@ public class StoryData : ScriptableObject
 public class Story
 {
     // ¥ UI •\¦‚É•K—v‚ÈŠî–{î•ñ
-    public Sprite Background;        // ”wŒi
+    public GameObject BackgroundParent;        // ”wŒi
     public Sprite CharacterImage;    // —§‚¿ŠG
     public string CharacterName;     // ƒLƒƒƒ‰–¼
 

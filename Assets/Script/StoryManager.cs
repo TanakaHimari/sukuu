@@ -10,7 +10,9 @@ public class StoryManager : MonoBehaviour
     [SerializeField] private StoryData[] storyDatas;
 
     [Header("UI")]
-    [SerializeField] private Image background;
+    [SerializeField] private GameObject background;
+    private GameObject currentBackgroundParent;
+
     [SerializeField] private Image characterImage;
     [SerializeField] private TextMeshProUGUI storyText;
     [SerializeField] private TextMeshProUGUI characterName;
@@ -57,15 +59,20 @@ public class StoryManager : MonoBehaviour
 
         currentStory = storyDatas[storyIndex].stories[textIndex];
 
-        // UI 反映
-        background.sprite = currentStory.Background;
+        // ▼ 背景セットの切り替え
+        if (currentBackgroundParent != null)
+            currentBackgroundParent.SetActive(false);
+
+        currentBackgroundParent = currentStory.BackgroundParent;
+        currentBackgroundParent.SetActive(true);
+
+        // ▼ 立ち絵・テキスト・キャラ名
         characterImage.sprite = currentStory.CharacterImage;
-        storyText.text = currentStory.StoryText;   // ← 統合後の StoryText を使用
+        storyText.text = currentStory.StoryText;
         characterName.text = currentStory.CharacterName;
 
-        // 選択肢がある場合のみ表示
-        if (!string.IsNullOrEmpty(currentStory.Choice1) ||
-            !string.IsNullOrEmpty(currentStory.Choice2))
+        // ▼ 選択肢の表示
+        if (!string.IsNullOrEmpty(currentStory.Choice1) || !string.IsNullOrEmpty(currentStory.Choice2))
         {
             choiceButton1.gameObject.SetActive(true);
             choiceButton2.gameObject.SetActive(true);
