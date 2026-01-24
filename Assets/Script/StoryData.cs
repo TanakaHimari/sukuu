@@ -14,7 +14,7 @@ public class Story
     // ▼ UI 表示に必要な基本情報
     public GameObject BackgroundParent;        // 背景
     public Sprite CharacterImage;    // 立ち絵
-    public string CharacterName;     // キャラ名
+    public Sprite CharacterNameImage;    // キャラ名
 
     // ▼ メイン会話（最初に表示される）
     [TextArea] public string StoryText;  

@@ -15,8 +15,7 @@ public class StoryManager : MonoBehaviour
 
     [SerializeField] private Image characterImage;
     [SerializeField] private TextMeshProUGUI storyText;
-    [SerializeField] private TextMeshProUGUI characterName;
-
+    [SerializeField] private Image characterNameImage;
     [Header("Choices")]
     [SerializeField] private Button choiceButton1;
     [SerializeField] private Button choiceButton2;
@@ -69,7 +68,7 @@ public class StoryManager : MonoBehaviour
         // ▼ 立ち絵・テキスト・キャラ名
         characterImage.sprite = currentStory.CharacterImage;
         storyText.text = currentStory.StoryText;
-        characterName.text = currentStory.CharacterName;
+        characterNameImage.sprite = currentStory.CharacterNameImage;
 
         // ▼ 選択肢の表示
         if (!string.IsNullOrEmpty(currentStory.Choice1) || !string.IsNullOrEmpty(currentStory.Choice2))
