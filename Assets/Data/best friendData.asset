@@ -12,4 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f63fdc25fd7429e4ab98021451048e20, type: 3}
   m_Name: best friendData
   m_EditorClassIdentifier: Assembly-CSharp::StoryData
-  stories: []
+  stories:
+  - Background: {fileID: 0}
+    CharacterImage: {fileID: 0}
+    CharacterName: 
+    StoryText: 
+    Choice1: 
+    Choice2: 
+    DialogueForChoice1: 
+    DialogueForChoice2: 
+    NextIndexForChoice1: 0
+    NextIndexForChoice2: 0
+    CommonIndex: 0
+    EffectForChoice1:
+      targetCharacter: 0
+      tag: 0
+    EffectForChoice2:
+      targetCharacter: 0
+      tag: 0
+    isUsed: 0
