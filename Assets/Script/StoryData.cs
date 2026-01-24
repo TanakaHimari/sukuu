@@ -47,6 +47,10 @@ public class Story
     public AffectionEffect EffectForChoice1;
     public AffectionEffect EffectForChoice2;
 
+    public string SceneForChoice1;
+    public string SceneForChoice2;
+
+
     // ▼ 使用済みフラグ
     public bool isUsed = false;
 }

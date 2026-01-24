@@ -42,6 +42,30 @@ public class StoryManager : MonoBehaviour
         LoadStory(storyIndex, textIndex);
     }
 
+    void Update()
+    {
+        // 選択肢が無いときだけクリックで進む
+        if (!choiceButton1.gameObject.activeSelf && !choiceButton2.gameObject.activeSelf)
+        {
+            if (nextAction.WasPerformedThisFrame())
+            {
+                GoToNextByClick();
+            }
+        }
+    }
+
+    private void GoToNextByClick()
+    {
+        int nextIndex = currentStory.NextIndexForChoice1; // Choice1 を通常進行として扱う
+
+        // -1 のときは進まない
+        if (nextIndex != -1)
+        {
+            LoadStory(storyIndex, nextIndex);
+        }
+    }
+
+
     void ResetChoiceButtonColors()
     {
         choiceButton1.colors = defaultColor1;
@@ -59,11 +83,11 @@ public class StoryManager : MonoBehaviour
         currentStory = storyDatas[storyIndex].stories[textIndex];
 
         // ▼ 背景セットの切り替え
-        if (currentBackgroundParent != null)
-            currentBackgroundParent.SetActive(false);
-
-        currentBackgroundParent = currentStory.BackgroundParent;
-        currentBackgroundParent.SetActive(true);
+        if (currentStory.BackgroundParent != null)
+        {
+            currentBackgroundParent = currentStory.BackgroundParent;
+            currentBackgroundParent.SetActive(true);
+        }
 
         // ▼ 立ち絵・テキスト・キャラ名
         characterImage.sprite = currentStory.CharacterImage;
@@ -117,22 +141,30 @@ public class StoryManager : MonoBehaviour
 
     private IEnumerator GoToNext(int choice)
     {
-        // 少し待ってから次へ（演出用）
         yield return new WaitForSeconds(0.6f);
 
-        int nextIndex = 0;
+        // ▼ シーン遷移が指定されている場合はそちらへ
+        if (choice == 1 && !string.IsNullOrEmpty(currentStory.SceneForChoice1))
+        {
+            SceneManager.LoadScene(currentStory.SceneForChoice1);
+            yield break;
+        }
+        else if (choice == 2 && !string.IsNullOrEmpty(currentStory.SceneForChoice2))
+        {
+            SceneManager.LoadScene(currentStory.SceneForChoice2);
+            yield break;
+        }
+
+        // ▼ 通常のストーリー分岐
+        int nextIndex = -1;
 
         if (choice == 1)
-        {
             nextIndex = currentStory.NextIndexForChoice1;
-        }
         else
-        {
             nextIndex = currentStory.NextIndexForChoice2;
-        }
 
-        // 分岐先 Story を読み込む
-        LoadStory(storyIndex, nextIndex);
+        if (nextIndex != -1)
+            LoadStory(storyIndex, nextIndex);
     }
 
     private void OnEnable()
