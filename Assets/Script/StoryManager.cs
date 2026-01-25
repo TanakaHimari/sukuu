@@ -114,6 +114,12 @@ public class StoryManager : MonoBehaviour
             choiceButton1.gameObject.SetActive(false);
             choiceButton2.gameObject.SetActive(false);
         }
+
+        // BGM が設定されている場合だけ切り替える
+        if (currentStory.bgmClip != null)
+        {
+            SoundManager.Instance.PlayBGM(currentStory.bgmClip, currentStory.bgmVolume);
+        }
     }
 
     // ▼ 選択肢が押された時
@@ -121,23 +127,27 @@ public class StoryManager : MonoBehaviour
     {
         currentStory.isUsed = true;
 
-        // 選択肢専用会話を表示
         if (choice == 1)
         {
             storyText.text = currentStory.DialogueForChoice1;
+
+            if (currentStory.CharacterNameImageForChoice1 != null)
+                characterNameImage.sprite = currentStory.CharacterNameImageForChoice1;
         }
         else
         {
             storyText.text = currentStory.DialogueForChoice2;
+
+            if (currentStory.CharacterNameImageForChoice2 != null)
+                characterNameImage.sprite = currentStory.CharacterNameImageForChoice2;
         }
 
-        // 選択肢専用会話を読ませるために一旦ボタンを消す
         choiceButton1.gameObject.SetActive(false);
         choiceButton2.gameObject.SetActive(false);
 
-        // 次の Story に進む処理を遅延実行
         StartCoroutine(GoToNext(choice));
     }
+
 
     private IEnumerator GoToNext(int choice)
     {

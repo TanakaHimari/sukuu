@@ -11,6 +11,11 @@ public class StoryData : ScriptableObject
 [System.Serializable]
 public class Story
 {
+    [Header("この会話で流すBGM（任意）")]
+    public AudioClip bgmClip;
+
+    [Range(0f, 1f)]
+    public float bgmVolume = 1f;
     // ▼ UI 表示に必要な基本情報
     public GameObject BackgroundParent;        // 背景
     public Sprite CharacterImage;    // 立ち絵
@@ -25,6 +30,9 @@ public class Story
     // ▼ 選択肢専用会話
     [TextArea] public string DialogueForChoice1;
     [TextArea] public string DialogueForChoice2;
+
+    public Sprite CharacterNameImageForChoice1;
+    public Sprite CharacterNameImageForChoice2;
 
     // ▼ 選択肢ごとの分岐先
     public int NextIndexForChoice1;

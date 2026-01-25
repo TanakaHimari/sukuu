@@ -1129,8 +1129,8 @@ MonoBehaviour:
   characterNameImage: {fileID: 1734483056}
   choiceButton1: {fileID: 2138086896}
   choiceButton2: {fileID: 253679240}
-  choiceText1: {fileID: 2068404503}
-  choiceText2: {fileID: 2068404503}
+  choiceText1: {fileID: 1194754489}
+  choiceText2: {fileID: 332191687}
   nextAction:
     m_Name: Next
     m_Type: 0
