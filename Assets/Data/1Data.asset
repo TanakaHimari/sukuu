@@ -14,11 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StoryData
   stories:
   - bgmClip: {fileID: 8300000, guid: 4a22e9db500359743bd37bc2a49114e0, type: 3}
-    bgmVolume: 0
     BackgroundParent: {fileID: 251028369216130433, guid: df24d8fae8ab88143b7f2407e684e83c, type: 3}
     CharacterImage: {fileID: -5421563630767576792, guid: 28df62903edd5b24491828b419ded982, type: 3}
     CharacterNameImage: {fileID: 21300000, guid: 6a9f940ad8f47134c8779db9fc67ee3a, type: 3}
-    speaker: 0
+    speaker: 1
     StoryText: "\u6BCE\u9031\u571F\u66DC\u3068\u65E5\u66DC\u65E5\u306F\u75C5\u9662\u306B\u9762\u4F1A\u306B\u5411\u304B\u3063\u3066\u3044\u308B\u3002\r\n\u5E7C\u99B4\u67D3\u3067\u3042\u308B\u7D14\u604B\u306B\u4F1A\u3044\u306B\u884C\u304F\u305F\u3081\u3060\u3002\r\n"
     Choice1: 
     Choice2: 
@@ -38,12 +37,11 @@ MonoBehaviour:
     SceneForChoice1: 
     SceneForChoice2: 
     isUsed: 0
-  - bgmClip: {fileID: 8300000, guid: 4a22e9db500359743bd37bc2a49114e0, type: 3}
-    bgmVolume: 0
+  - bgmClip: {fileID: 0}
     BackgroundParent: {fileID: 251028369216130433, guid: df24d8fae8ab88143b7f2407e684e83c, type: 3}
     CharacterImage: {fileID: -5421563630767576792, guid: 28df62903edd5b24491828b419ded982, type: 3}
     CharacterNameImage: {fileID: 21300000, guid: 6a9f940ad8f47134c8779db9fc67ee3a, type: 3}
-    speaker: 0
+    speaker: 1
     StoryText: "\u5148\u307B\u3069\u307E\u3067\u5BDD\u3066\u3044\u305F\u306E\u304B\u5F7C\u5973\u306F\u30DC\u30FC\u3068\u3057\u3066\u304A\u308A\u3001\n\u3053\u3061\u3089\u306B\u6C17\u3065\u304F\u3053\u3068\u306A\u304F\u865A\u7A7A\u3092\u898B\u3064\u3081\u3066\u3044\u308B\u3002"
     Choice1: 
     Choice2: 
@@ -63,8 +61,7 @@ MonoBehaviour:
     SceneForChoice1: 
     SceneForChoice2: 
     isUsed: 0
-  - bgmClip: {fileID: 8300000, guid: 4a22e9db500359743bd37bc2a49114e0, type: 3}
-    bgmVolume: 0
+  - bgmClip: {fileID: 0}
     BackgroundParent: {fileID: 251028369216130433, guid: df24d8fae8ab88143b7f2407e684e83c, type: 3}
     CharacterImage: {fileID: -5421563630767576792, guid: 28df62903edd5b24491828b419ded982, type: 3}
     CharacterNameImage: {fileID: 21300000, guid: 0a64d6a37196fe9449b34040ca48efff, type: 3}
@@ -88,8 +85,7 @@ MonoBehaviour:
     SceneForChoice1: 
     SceneForChoice2: 
     isUsed: 0
-  - bgmClip: {fileID: 8300000, guid: 4a22e9db500359743bd37bc2a49114e0, type: 3}
-    bgmVolume: 0
+  - bgmClip: {fileID: 0}
     BackgroundParent: {fileID: 251028369216130433, guid: df24d8fae8ab88143b7f2407e684e83c, type: 3}
     CharacterImage: {fileID: -4000868178460310276, guid: be8ad67fe6aa95d47926a5dbc288ef4b, type: 3}
     CharacterNameImage: {fileID: 21300000, guid: 0a64d6a37196fe9449b34040ca48efff, type: 3}

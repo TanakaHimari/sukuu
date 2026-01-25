@@ -11,6 +11,8 @@ public class AffectionManager : MonoBehaviour
 
     private void Awake()
     {
+        
+
         Instance = this;
 
         affectionDict[CharacterID.CharacterA] = 50;   // ← A の初期値
@@ -21,6 +23,7 @@ public class AffectionManager : MonoBehaviour
     // 好感度変化
     public void ApplyAffection(CharacterID id, AffectionTag tag)
     {
+        Debug.Log("AffectionUI");
         if (!affectionDict.ContainsKey(id)) return;
 
         switch (tag)
@@ -39,7 +42,15 @@ public class AffectionManager : MonoBehaviour
     // 個別取得
     public int GetAffection(CharacterID id)
     {
-        return affectionDict.TryGetValue(id, out int value) ? value : 0;
+        if (affectionDict.ContainsKey(id))
+        {
+            Debug.Log($"GetAffection: {id} = {affectionDict[id]}");
+            return affectionDict[id];
+        }
+        else
+        {
+            return 0;
+        }
     }
 
     // ★ 全キャラの好感度をまとめて取得

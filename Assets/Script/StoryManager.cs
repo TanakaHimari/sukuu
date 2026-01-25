@@ -24,8 +24,6 @@ public class StoryManager : MonoBehaviour
     [SerializeField] private Button choiceButton2;
     [SerializeField] private TextMeshProUGUI choiceText1;
     [SerializeField] private TextMeshProUGUI choiceText2;
-    // ▼ 話者（A or B）
-    public CharacterID speaker;
 
     private ColorBlock defaultColor1;
     private ColorBlock defaultColor2;
@@ -38,11 +36,20 @@ public class StoryManager : MonoBehaviour
     public int textIndex { get; private set; }
 
     public CharacterID CurrentSpeaker { get; private set; }
+    void Awake()
+    {
+        Instance = this;
+    }
+
+
+
 
     public void SetSpeaker(CharacterID id)
     {
         CurrentSpeaker = id;
     }
+
+    
 
 
     private Story currentStory;
@@ -98,12 +105,15 @@ void ResetChoiceButtonColors()
     // ▼ Story を読み込む
     public void LoadStory(int sIndex, int tIndex)
     {
+       
         ResetChoiceButtonColors();
 
         storyIndex = sIndex;
         textIndex = tIndex;
 
         currentStory = storyDatas[storyIndex].stories[textIndex];
+        Debug.Log($"LoadStory: speaker = {currentStory.speaker}");
+
 
         // ▼ 背景セットの切り替え
         if (currentStory.BackgroundParent != null)
@@ -111,13 +121,14 @@ void ResetChoiceButtonColors()
             currentBackgroundParent = currentStory.BackgroundParent;
             currentBackgroundParent.SetActive(true);
         }
+        SetSpeaker(currentStory.speaker);
 
         // ▼ 立ち絵・テキスト・キャラ名
         characterImage.sprite = currentStory.CharacterImage;
         storyText.text = currentStory.StoryText;
         characterNameImage.sprite = currentStory.CharacterNameImage;
 
-        SetSpeaker(currentStory.speaker);
+ 
 
 
         // ▼ 選択肢の表示
@@ -151,6 +162,14 @@ void ResetChoiceButtonColors()
     // ▼ 選択肢が押された時
     private void OnChoiceSelected(int choice)
     {
+        // ▼ 好感度変化の反映
+        var effect = (choice == 1) ? currentStory.EffectForChoice1 : currentStory.EffectForChoice2;
+
+        if (effect != null)
+        {
+            AffectionManager.Instance.ApplyAffection(effect.targetCharacter, effect.tag);
+        }
+
         currentStory.isUsed = true;
 
         if (choice == 1)

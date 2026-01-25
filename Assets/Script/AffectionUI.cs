@@ -1,13 +1,32 @@
 using UnityEngine;
+using System.Collections;
+
 using TMPro;
 using static Story;
 
 public class AffectionUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text affectionText;
+    private bool ready = false;
+
+    IEnumerator Start()
+    {
+        while (StoryManager.Instance == null)
+        {
+            yield return null; // 1ÉtÉåÅ[ÉÄë“Ç¬
+        }
+
+    }
+
+
+
 
     void Update()
     {
+
+
+        affectionText.text = "TEST";
+
         if (StoryManager.Instance == null)
             return;
 
@@ -26,6 +45,8 @@ public class AffectionUI : MonoBehaviour
         int value = AffectionManager.Instance.GetAffection(speaker);
 
         // ï\é¶
-        affectionText.text = $"{speaker} : {value}";
+        affectionText.text = $"{value}";
+
+      
     }
 }
