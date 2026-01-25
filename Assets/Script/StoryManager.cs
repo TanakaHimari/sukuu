@@ -4,9 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using static Story;
 
 public class StoryManager : MonoBehaviour
 {
+    public static StoryManager Instance;
+
     [SerializeField] private StoryData[] storyDatas;
 
     [Header("UI")]
@@ -21,6 +24,8 @@ public class StoryManager : MonoBehaviour
     [SerializeField] private Button choiceButton2;
     [SerializeField] private TextMeshProUGUI choiceText1;
     [SerializeField] private TextMeshProUGUI choiceText2;
+    // ▼ 話者（A or B）
+    public CharacterID speaker;
 
     private ColorBlock defaultColor1;
     private ColorBlock defaultColor2;
@@ -31,6 +36,14 @@ public class StoryManager : MonoBehaviour
     // 現在の StoryData と Story のインデックス
     public int storyIndex { get; private set; }
     public int textIndex { get; private set; }
+
+    public CharacterID CurrentSpeaker { get; private set; }
+
+    public void SetSpeaker(CharacterID id)
+    {
+        CurrentSpeaker = id;
+    }
+
 
     private Story currentStory;
 
@@ -47,18 +60,26 @@ public class StoryManager : MonoBehaviour
         // 選択肢が無いときだけクリックで進む
         if (!choiceButton1.gameObject.activeSelf && !choiceButton2.gameObject.activeSelf)
         {
+            // nextAction（キーボード）でも進む
             if (nextAction.WasPerformedThisFrame())
+            {
+                GoToNextByClick();
+            }
+
+            // ★ マウス左クリックでも進む
+            if (Mouse.current.leftButton.wasPressedThisFrame)
             {
                 GoToNextByClick();
             }
         }
     }
 
+
+
     private void GoToNextByClick()
     {
-        int nextIndex = currentStory.NextIndexForChoice1; // Choice1 を通常進行として扱う
+        int nextIndex = currentStory.CommonIndex;
 
-        // -1 のときは進まない
         if (nextIndex != -1)
         {
             LoadStory(storyIndex, nextIndex);
@@ -66,7 +87,9 @@ public class StoryManager : MonoBehaviour
     }
 
 
-    void ResetChoiceButtonColors()
+
+
+void ResetChoiceButtonColors()
     {
         choiceButton1.colors = defaultColor1;
         choiceButton2.colors = defaultColor2;
@@ -94,6 +117,9 @@ public class StoryManager : MonoBehaviour
         storyText.text = currentStory.StoryText;
         characterNameImage.sprite = currentStory.CharacterNameImage;
 
+        SetSpeaker(currentStory.speaker);
+
+
         // ▼ 選択肢の表示
         if (!string.IsNullOrEmpty(currentStory.Choice1) || !string.IsNullOrEmpty(currentStory.Choice2))
         {
@@ -118,7 +144,7 @@ public class StoryManager : MonoBehaviour
         // BGM が設定されている場合だけ切り替える
         if (currentStory.bgmClip != null)
         {
-            SoundManager.Instance.PlayBGM(currentStory.bgmClip, currentStory.bgmVolume);
+            SoundManager.Instance.PlayBGM(currentStory.bgmClip);
         }
     }
 
@@ -146,7 +172,21 @@ public class StoryManager : MonoBehaviour
         choiceButton2.gameObject.SetActive(false);
 
         StartCoroutine(GoToNext(choice));
+        DebugAffection();
     }
+
+    // ▼ 好感度を確認する（AとB両方）
+    private void DebugAffection()
+    {
+        var all = AffectionManager.Instance.GetAllAffection();
+
+        int affectionA = all[CharacterID.CharacterA];
+        int affectionB = all[CharacterID.CharacterB];
+
+        Debug.Log($"Aの好感度: {affectionA}");
+        Debug.Log($"Bの好感度: {affectionB}");
+    }
+
 
 
     private IEnumerator GoToNext(int choice)
@@ -176,6 +216,7 @@ public class StoryManager : MonoBehaviour
         if (nextIndex != -1)
             LoadStory(storyIndex, nextIndex);
     }
+
 
     private void OnEnable()
     {

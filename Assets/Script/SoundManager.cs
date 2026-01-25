@@ -117,18 +117,39 @@ public class SoundManager : MonoBehaviour
     /// BGM調整
     /// </summary>
     /// <param name="volume">音量</param>
-    public void SetBGMVolume(float volume)
+  
+       public void SetBGMVolume(float volume)
     {
-        // AudioMixer の BGMVolume パラメータに値をセット
-        // volume(0〜1) を dB に変換して渡す
-        audioMixer.SetFloat("BGMVolume", Mathf.Log10(volume) * 20);
+        volume = Mathf.Clamp01(volume);
+
+        // 完全ミュート
+        if (volume <= 0.0001f)
+        {
+            bgmSource.mute = true;
+            audioMixer.SetFloat("BGMVolume", -80f);
+            return;
+        }
+
+        // ミュート解除
+        bgmSource.mute = false;
+
+        float safeVolume = Mathf.Max(volume, 0.0001f);
+        float dB = Mathf.Log10(safeVolume) * 20f;
+        dB = Mathf.Clamp(dB, -80f, 0f);
+
+        audioMixer.SetFloat("BGMVolume", dB);
+
     }
+
     /// <summary>
     /// SE調整
     /// </summary>
     /// <param name="volume">音量</param>
     public void SetSEVolume(float volume)
     {
+        volume = Mathf.Clamp01(volume); // ★ 追加：0〜1に固定
+
+
         // 同じく SEVolume を調整
         audioMixer.SetFloat("SEVolume", Mathf.Log10(volume) * 20);
     }

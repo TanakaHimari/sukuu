@@ -13,16 +13,17 @@ public class Story
 {
     [Header("この会話で流すBGM（任意）")]
     public AudioClip bgmClip;
-
-    [Range(0f, 1f)]
-    public float bgmVolume = 1f;
     // ▼ UI 表示に必要な基本情報
     public GameObject BackgroundParent;        // 背景
     public Sprite CharacterImage;    // 立ち絵
     public Sprite CharacterNameImage;    // キャラ名
+    public CharacterID speaker;// 話者（この StoryText を誰が話すか）
+
+
 
     // ▼ メイン会話（最初に表示される）
     [TextArea] public string StoryText;  
+
     // ▼ 選択肢
     public string Choice1;
     public string Choice2;

@@ -1,43 +1,50 @@
+using static Story;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class AffectionManager : MonoBehaviour
 {
-    // キャラごとの好感度を管理する辞書
-    // CharacterA と CharacterB の2人分を初期化
-    private Dictionary<Story.CharacterID, int> affection = new Dictionary<Story.CharacterID, int>()
-    {
-        { Story.CharacterID.CharacterA, 0 },
-        { Story.CharacterID.CharacterB, 0 }
-    };
+    public static AffectionManager Instance;
 
-    // ▼ Story から渡された効果を適用する
-    public void ApplyEffect(Story.AffectionEffect effect)
-    {
-        // null や対象なしの場合は何もしない
-        if (effect == null || effect.targetCharacter == Story.CharacterID.None)
-            return;
+    private Dictionary<CharacterID, int> affectionDict = new();
 
-        // タグに応じて好感度を変化させる
-        switch (effect.tag)
+    private void Awake()
+    {
+        Instance = this;
+
+        affectionDict[CharacterID.CharacterA] = 50;   // ← A の初期値
+        affectionDict[CharacterID.CharacterB] = 99;  // ← B の初期値
+    }
+
+
+    // 好感度変化
+    public void ApplyAffection(CharacterID id, AffectionTag tag)
+    {
+        if (!affectionDict.ContainsKey(id)) return;
+
+        switch (tag)
         {
-            case Story.AffectionTag.Increase:
-                affection[effect.targetCharacter] += 1;
+            case AffectionTag.Increase:
+                affectionDict[id]++;
                 break;
-
-            case Story.AffectionTag.Decrease:
-                affection[effect.targetCharacter] -= 1;
+            case AffectionTag.Decrease:
+                affectionDict[id]--;
                 break;
-
-            case Story.AffectionTag.Keep:
-                // 値は変えない（演出用）
+            case AffectionTag.Keep:
                 break;
         }
     }
 
-    // ▼ 現在の好感度を取得する
-    public int GetAffection(Story.CharacterID id)
+    // 個別取得
+    public int GetAffection(CharacterID id)
     {
-        return affection[id];
+        return affectionDict.TryGetValue(id, out int value) ? value : 0;
+    }
+
+    // ★ 全キャラの好感度をまとめて取得
+    public Dictionary<CharacterID, int> GetAllAffection()
+    {
+        return new Dictionary<CharacterID, int>(affectionDict);
     }
 }
