@@ -1,11 +1,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//ヒロインの背景か親友の背景か
+public enum BackgroundType
+{
+    Friend,
+    Heroine
+}
+
+
 [CreateAssetMenu(fileName = "New StoryData", menuName = "Story/StoryData")]
 public class StoryData : ScriptableObject
 {
     public List<Story> stories = new List<Story>();
+
+
+ 
 }
+
 
 
 [System.Serializable]
@@ -14,7 +26,8 @@ public class Story
     [Header("この会話で流すBGM（任意）")]
     public AudioClip bgmClip;
     // ▼ UI 表示に必要な基本情報
-    public GameObject BackgroundParent;        // 背景
+    //背景タイプ
+    public BackgroundType backgroundType;
     public Sprite CharacterImage;    // 立ち絵
     public Sprite CharacterNameImage;    // キャラ名
     public CharacterID speaker;// 話者（この StoryText を誰が話すか）

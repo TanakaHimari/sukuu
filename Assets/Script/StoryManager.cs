@@ -5,16 +5,36 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using static Story;
+using System.Collections.Generic;
+
 
 public class StoryManager : MonoBehaviour
 {
+
+    public static int lastChoiceStoryIndex = -1;
+    public static int lastChoiceTextIndex = -1;
+    public GameObject endingUI;
+
+    [Header("背景親オブジェクト")]
+    private GameObject currentBackground;
+    public Transform backgroundParentTransform;
+
+    [Header("親友の背景")]public GameObject friendBackgroundPrefab;
+    [Header("ヒロインの背景")] public GameObject heroineBackgroundPrefab;
+
+
+
+
+
+
+
+
+
     public static StoryManager Instance;
 
     [SerializeField] private StoryData[] storyDatas;
 
     [Header("UI")]
-    [SerializeField] private GameObject background;
-    private GameObject currentBackgroundParent;
 
     [SerializeField] private Image characterImage;
     [SerializeField] private TextMeshProUGUI storyText;
@@ -36,31 +56,102 @@ public class StoryManager : MonoBehaviour
     public int textIndex { get; private set; }
 
     public CharacterID CurrentSpeaker { get; private set; }
+
+    // キャラごとに横UIの画像を設定するためのデータ構造
+    [System.Serializable]
+    public class CharacterUIData
+    {
+        public CharacterID character; // 対象キャラ
+        public Sprite uiSprite;       // そのキャラ用のUI画像
+    }
+
+    // Inspector で設定するリスト
+    public CharacterUIData[] characterUIList;
+
+    // 実行時に高速アクセスするための辞書
+    private Dictionary<CharacterID, Sprite> characterUIDict;
+
     void Awake()
     {
         Instance = this;
+
+        characterUIDict = new Dictionary<CharacterID, Sprite>();
+        foreach (var data in characterUIList)
+        {
+            characterUIDict[data.character] = data.uiSprite;
+        }
     }
 
 
 
+    // 選択肢横のUI画像（Imageコンポーネント）
+    public Image choiceSideUIImage;
 
+    // 話者を設定し、UI画像も切り替える
     public void SetSpeaker(CharacterID id)
     {
         CurrentSpeaker = id;
+
+        // ▼ 話者に応じて横UI画像を切り替える
+        // characterUIDict に登録されていれば、その Sprite を取得
+        if (characterUIDict.TryGetValue(id, out Sprite sprite))
+        {
+            // UI画像を切り替えて表示
+            choiceSideUIImage.sprite = sprite;
+            choiceSideUIImage.gameObject.SetActive(true);
+        }
+        else
+        {
+            // 話者が None や未登録キャラの場合 → UIを非表示にする
+            choiceSideUIImage.gameObject.SetActive(false);
+        }
+
+        // ▼ ここから下は既存の話者設定処理（名前表示など）
+        // 例：
+        // nameText.text = GetCharacterName(id);
     }
 
-    
+    private void SetBackground(Story story)
+    {
+        if (currentBackground != null)
+            Destroy(currentBackground);
+
+        GameObject prefabToUse = null;
+
+        switch (story.backgroundType)
+        {
+            case BackgroundType.Friend:
+                prefabToUse = friendBackgroundPrefab;
+                break;
+            case BackgroundType.Heroine:
+                prefabToUse = heroineBackgroundPrefab;
+                break;
+        }
+
+        if (prefabToUse != null)
+        {
+            currentBackground = Instantiate(prefabToUse, backgroundParentTransform);
+        }
+    }
+
+
+
 
 
     private Story currentStory;
 
     void Start()
     {
-        defaultColor1 = choiceButton1.colors;
-        defaultColor2 = choiceButton2.colors;
+        endingUI.SetActive(false);
 
-        LoadStory(storyIndex, textIndex);
+        if (lastChoiceStoryIndex >= 0 && lastChoiceTextIndex >= 0)
+            LoadStory(lastChoiceStoryIndex, lastChoiceTextIndex);
+        else
+            LoadStory(0, 0);
+
+
     }
+
 
     void Update()
     {
@@ -104,8 +195,9 @@ void ResetChoiceButtonColors()
 
     // ▼ Story を読み込む
     public void LoadStory(int sIndex, int tIndex)
-    {
-       
+    {Debug.Log($"LOAD: sIndex={sIndex}, tIndex={tIndex}");
+
+ 
         ResetChoiceButtonColors();
 
         storyIndex = sIndex;
@@ -114,13 +206,7 @@ void ResetChoiceButtonColors()
         currentStory = storyDatas[storyIndex].stories[textIndex];
         Debug.Log($"LoadStory: speaker = {currentStory.speaker}");
 
-
-        // ▼ 背景セットの切り替え
-        if (currentStory.BackgroundParent != null)
-        {
-            currentBackgroundParent = currentStory.BackgroundParent;
-            currentBackgroundParent.SetActive(true);
-        }
+        SetBackground(currentStory);
         SetSpeaker(currentStory.speaker);
 
         // ▼ 立ち絵・テキスト・キャラ名
@@ -128,12 +214,13 @@ void ResetChoiceButtonColors()
         storyText.text = currentStory.StoryText;
         characterNameImage.sprite = currentStory.CharacterNameImage;
 
- 
-
-
         // ▼ 選択肢の表示
         if (!string.IsNullOrEmpty(currentStory.Choice1) || !string.IsNullOrEmpty(currentStory.Choice2))
         {
+            lastChoiceStoryIndex = storyIndex;
+            lastChoiceTextIndex = textIndex;
+
+            // 選択肢あり
             choiceButton1.gameObject.SetActive(true);
             choiceButton2.gameObject.SetActive(true);
 
@@ -148,8 +235,35 @@ void ResetChoiceButtonColors()
         }
         else
         {
+            // 選択肢なし → 横UIも消す
             choiceButton1.gameObject.SetActive(false);
             choiceButton2.gameObject.SetActive(false);
+
+            // ★ 横UIを強制的に非表示
+            choiceSideUIImage.gameObject.SetActive(false);
+        }
+
+
+       
+
+        // ▼ ストーリーデータの最後に到達したか判定
+
+        bool noChoices =
+    string.IsNullOrEmpty(currentStory.Choice1) &&
+    string.IsNullOrEmpty(currentStory.Choice2);
+
+        bool noNext =
+            currentStory.NextIndexForChoice1 == -1 &&
+            currentStory.NextIndexForChoice2 == -1 &&
+            currentStory.CommonIndex == -1 &&
+            string.IsNullOrEmpty(currentStory.SceneForChoice1) &&
+            string.IsNullOrEmpty(currentStory.SceneForChoice2);
+
+        bool isEnding = noChoices && noNext;
+
+        if (isEnding)
+        {
+            endingUI.SetActive(true);
         }
 
         // BGM が設定されている場合だけ切り替える
