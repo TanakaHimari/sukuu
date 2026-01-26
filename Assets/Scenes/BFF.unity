@@ -236,6 +236,7 @@ PrefabInstance:
     - {fileID: 2098121299624945779, guid: 0d73e204f1a867e49af404b6a5e45de8, type: 3}
     - {fileID: -1956464013282088108, guid: 0d73e204f1a867e49af404b6a5e45de8, type: 3}
     - {fileID: 5017637148789005845, guid: 0d73e204f1a867e49af404b6a5e45de8, type: 3}
+    - {fileID: 4807234255550314721, guid: 0d73e204f1a867e49af404b6a5e45de8, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1160464852923749074, guid: 0d73e204f1a867e49af404b6a5e45de8, type: 3}
       insertIndex: -1
@@ -359,6 +360,10 @@ PrefabInstance:
     - target: {fileID: 3397122299873690858, guid: 203de0a473ffea342be0453030ba8454, type: 3}
       propertyPath: endingButton2
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397122299873690858, guid: 203de0a473ffea342be0453030ba8454, type: 3}
+      propertyPath: isEndingScene
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3397122299873690858, guid: 203de0a473ffea342be0453030ba8454, type: 3}
       propertyPath: characterImage
@@ -529,7 +534,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &441158392
 RectTransform:
   m_ObjectHideFlags: 0
