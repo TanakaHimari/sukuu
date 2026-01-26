@@ -485,6 +485,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 253679240}
     - target: {fileID: 3397122299873690858, guid: 203de0a473ffea342be0453030ba8454, type: 3}
+      propertyPath: isEndingScene
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3397122299873690858, guid: 203de0a473ffea342be0453030ba8454, type: 3}
       propertyPath: characterImage
       value: 
       objectReference: {fileID: 416196181}

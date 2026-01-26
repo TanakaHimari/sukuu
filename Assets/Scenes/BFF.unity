@@ -242,6 +242,17 @@ PrefabInstance:
       addedObject: {fileID: 441158392}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d73e204f1a867e49af404b6a5e45de8, type: 3}
+--- !u!114 &303391242 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2385276106889986146, guid: 0d73e204f1a867e49af404b6a5e45de8, type: 3}
+  m_PrefabInstance: {fileID: 303391241}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!114 &303391243 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4935603659496378272, guid: 0d73e204f1a867e49af404b6a5e45de8, type: 3}
@@ -1331,7 +1342,7 @@ PrefabInstance:
     - target: {fileID: 6066083745881437846, guid: aafe30eba9aac314faba500de0b2575c, type: 3}
       propertyPath: affectionText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 303391242}
     - target: {fileID: 9097376481864078050, guid: aafe30eba9aac314faba500de0b2575c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.56689

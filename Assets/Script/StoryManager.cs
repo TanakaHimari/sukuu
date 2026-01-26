@@ -14,6 +14,8 @@ public class StoryManager : MonoBehaviour
     public static int lastChoiceStoryIndex = -1;
     public static int lastChoiceTextIndex = -1;
     public GameObject endingUI;
+    public bool isEndingScene = false;
+
 
     [Header("背景親オブジェクト")]
     private GameObject currentBackground;
@@ -144,16 +146,23 @@ public class StoryManager : MonoBehaviour
     {
         endingUI.SetActive(false);
 
-        if (lastChoiceStoryIndex >= 0 && lastChoiceTextIndex >= 0)
-            LoadStory(lastChoiceStoryIndex, lastChoiceTextIndex);
-        else
-            LoadStory(0, 0);
+        if (!isEndingScene)
+        {
+            // インゲームの場合だけ index を使う
+            if (lastChoiceStoryIndex >= 0 && lastChoiceTextIndex >= 0)
+            {
+                LoadStory(lastChoiceStoryIndex, lastChoiceTextIndex);
+                return;
+            }
+        }
 
-
+        // エンディング or 初回
+        LoadStory(0, 0);
     }
 
 
-    void Update()
+
+void Update()
     {
         // 選択肢が無いときだけクリックで進む
         if (!choiceButton1.gameObject.activeSelf && !choiceButton2.gameObject.activeSelf)

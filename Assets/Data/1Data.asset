@@ -350,7 +350,7 @@ MonoBehaviour:
     SceneForChoice1: 
     SceneForChoice2: 
     isUsed: 1
-  - bgmClip: {fileID: 8300000, guid: ddad703cb996eb845bbad9af5bd696a5, type: 3}
+  - bgmClip: {fileID: 0}
     backgroundType: 0
     CharacterImage: {fileID: -997070475312469556, guid: ca94086e9728dfa4a983192c99dcb7ec, type: 3}
     CharacterNameImage: {fileID: 21300000, guid: 6a9f940ad8f47134c8779db9fc67ee3a, type: 3}
@@ -374,7 +374,7 @@ MonoBehaviour:
     SceneForChoice1: 
     SceneForChoice2: 
     isUsed: 1
-  - bgmClip: {fileID: 8300000, guid: ddad703cb996eb845bbad9af5bd696a5, type: 3}
+  - bgmClip: {fileID: 0}
     backgroundType: 0
     CharacterImage: {fileID: -997070475312469556, guid: ca94086e9728dfa4a983192c99dcb7ec, type: 3}
     CharacterNameImage: {fileID: 21300000, guid: d454ddcd6e503d947b57cc9db2bbbc8c, type: 3}
@@ -398,7 +398,7 @@ MonoBehaviour:
     SceneForChoice1: 
     SceneForChoice2: 
     isUsed: 1
-  - bgmClip: {fileID: 8300000, guid: ddad703cb996eb845bbad9af5bd696a5, type: 3}
+  - bgmClip: {fileID: 0}
     backgroundType: 0
     CharacterImage: {fileID: -997070475312469556, guid: ca94086e9728dfa4a983192c99dcb7ec, type: 3}
     CharacterNameImage: {fileID: 21300000, guid: 6a9f940ad8f47134c8779db9fc67ee3a, type: 3}
@@ -422,7 +422,7 @@ MonoBehaviour:
     SceneForChoice1: 
     SceneForChoice2: 
     isUsed: 1
-  - bgmClip: {fileID: 8300000, guid: ddad703cb996eb845bbad9af5bd696a5, type: 3}
+  - bgmClip: {fileID: 0}
     backgroundType: 0
     CharacterImage: {fileID: -997070475312469556, guid: ca94086e9728dfa4a983192c99dcb7ec, type: 3}
     CharacterNameImage: {fileID: 21300000, guid: d454ddcd6e503d947b57cc9db2bbbc8c, type: 3}
@@ -446,7 +446,7 @@ MonoBehaviour:
     SceneForChoice1: 
     SceneForChoice2: 
     isUsed: 1
-  - bgmClip: {fileID: 8300000, guid: ddad703cb996eb845bbad9af5bd696a5, type: 3}
+  - bgmClip: {fileID: 0}
     backgroundType: 0
     CharacterImage: {fileID: -9148801718462313048, guid: 1d3e9bb871a627046907398aa9514ca0, type: 3}
     CharacterNameImage: {fileID: 21300000, guid: 6a9f940ad8f47134c8779db9fc67ee3a, type: 3}
@@ -470,7 +470,7 @@ MonoBehaviour:
     SceneForChoice1: 
     SceneForChoice2: 
     isUsed: 1
-  - bgmClip: {fileID: 8300000, guid: ddad703cb996eb845bbad9af5bd696a5, type: 3}
+  - bgmClip: {fileID: 0}
     backgroundType: 0
     CharacterImage: {fileID: -5683469921448104005, guid: a03d30a0a864b0e4c960de49ae36ef7d, type: 3}
     CharacterNameImage: {fileID: 21300000, guid: d454ddcd6e503d947b57cc9db2bbbc8c, type: 3}
@@ -494,7 +494,7 @@ MonoBehaviour:
     SceneForChoice1: 
     SceneForChoice2: 
     isUsed: 1
-  - bgmClip: {fileID: 8300000, guid: ddad703cb996eb845bbad9af5bd696a5, type: 3}
+  - bgmClip: {fileID: 0}
     backgroundType: 0
     CharacterImage: {fileID: -3953263413475941203, guid: 6d730f39ba934074294ba805a66b67d6, type: 3}
     CharacterNameImage: {fileID: 21300000, guid: d454ddcd6e503d947b57cc9db2bbbc8c, type: 3}
@@ -518,7 +518,7 @@ MonoBehaviour:
     SceneForChoice1: 
     SceneForChoice2: 
     isUsed: 1
-  - bgmClip: {fileID: 8300000, guid: ddad703cb996eb845bbad9af5bd696a5, type: 3}
+  - bgmClip: {fileID: 0}
     backgroundType: 0
     CharacterImage: {fileID: -3953263413475941203, guid: 6d730f39ba934074294ba805a66b67d6, type: 3}
     CharacterNameImage: {fileID: 21300000, guid: d454ddcd6e503d947b57cc9db2bbbc8c, type: 3}
@@ -542,7 +542,7 @@ MonoBehaviour:
     SceneForChoice1: 
     SceneForChoice2: 
     isUsed: 1
-  - bgmClip: {fileID: 8300000, guid: ddad703cb996eb845bbad9af5bd696a5, type: 3}
+  - bgmClip: {fileID: 0}
     backgroundType: 0
     CharacterImage: {fileID: -3953263413475941203, guid: 6d730f39ba934074294ba805a66b67d6, type: 3}
     CharacterNameImage: {fileID: 21300000, guid: d454ddcd6e503d947b57cc9db2bbbc8c, type: 3}
@@ -566,7 +566,7 @@ MonoBehaviour:
     SceneForChoice1: BFF
     SceneForChoice2: 
     isUsed: 1
-  - bgmClip: {fileID: 8300000, guid: ddad703cb996eb845bbad9af5bd696a5, type: 3}
+  - bgmClip: {fileID: 0}
     backgroundType: 0
     CharacterImage: {fileID: -3953263413475941203, guid: 6d730f39ba934074294ba805a66b67d6, type: 3}
     CharacterNameImage: {fileID: 21300000, guid: d454ddcd6e503d947b57cc9db2bbbc8c, type: 3}
@@ -590,7 +590,7 @@ MonoBehaviour:
     SceneForChoice1: 
     SceneForChoice2: 
     isUsed: 1
-  - bgmClip: {fileID: 8300000, guid: ddad703cb996eb845bbad9af5bd696a5, type: 3}
+  - bgmClip: {fileID: 0}
     backgroundType: 0
     CharacterImage: {fileID: -997070475312469556, guid: ca94086e9728dfa4a983192c99dcb7ec, type: 3}
     CharacterNameImage: {fileID: 21300000, guid: d454ddcd6e503d947b57cc9db2bbbc8c, type: 3}
@@ -614,7 +614,7 @@ MonoBehaviour:
     SceneForChoice1: 
     SceneForChoice2: 
     isUsed: 1
-  - bgmClip: {fileID: 8300000, guid: ddad703cb996eb845bbad9af5bd696a5, type: 3}
+  - bgmClip: {fileID: 0}
     backgroundType: 0
     CharacterImage: {fileID: -997070475312469556, guid: ca94086e9728dfa4a983192c99dcb7ec, type: 3}
     CharacterNameImage: {fileID: 21300000, guid: 6a9f940ad8f47134c8779db9fc67ee3a, type: 3}
@@ -638,7 +638,7 @@ MonoBehaviour:
     SceneForChoice1: 
     SceneForChoice2: 
     isUsed: 1
-  - bgmClip: {fileID: 8300000, guid: ddad703cb996eb845bbad9af5bd696a5, type: 3}
+  - bgmClip: {fileID: 0}
     backgroundType: 0
     CharacterImage: {fileID: -9148801718462313048, guid: 1d3e9bb871a627046907398aa9514ca0, type: 3}
     CharacterNameImage: {fileID: 21300000, guid: d454ddcd6e503d947b57cc9db2bbbc8c, type: 3}
@@ -662,7 +662,7 @@ MonoBehaviour:
     SceneForChoice1: BFF
     SceneForChoice2: BFF
     isUsed: 1
-  - bgmClip: {fileID: 8300000, guid: ddad703cb996eb845bbad9af5bd696a5, type: 3}
+  - bgmClip: {fileID: 0}
     backgroundType: 0
     CharacterImage: {fileID: -9148801718462313048, guid: 1d3e9bb871a627046907398aa9514ca0, type: 3}
     CharacterNameImage: {fileID: 21300000, guid: d454ddcd6e503d947b57cc9db2bbbc8c, type: 3}
@@ -710,7 +710,7 @@ MonoBehaviour:
     SceneForChoice1: 
     SceneForChoice2: 
     isUsed: 1
-  - bgmClip: {fileID: 8300000, guid: 4a22e9db500359743bd37bc2a49114e0, type: 3}
+  - bgmClip: {fileID: 0}
     backgroundType: 1
     CharacterImage: {fileID: -4445754285344605959, guid: eed45a5a6480a984dac56fc81b7a4619, type: 3}
     CharacterNameImage: {fileID: 21300000, guid: 6a9f940ad8f47134c8779db9fc67ee3a, type: 3}
