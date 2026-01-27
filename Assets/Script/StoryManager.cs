@@ -333,7 +333,12 @@ void ResetChoiceButtonColors()
 
     private IEnumerator GoToNext(int choice)
     {
-        yield return new WaitForSeconds(0.6f);
+        // ★ 選択肢を押した瞬間のクリックを無効化
+        yield return null;
+
+
+
+        yield return new WaitForSeconds(2f);
 
         // ▼ シーン遷移が指定されている場合はそちらへ
         if (choice == 1 && !string.IsNullOrEmpty(currentStory.SceneForChoice1))
