@@ -142,27 +142,54 @@ public class StoryManager : MonoBehaviour
 
     private Story currentStory;
 
+    public void ResetAllStoryData()
+    {
+        //リトライ用インデックスを追加
+        lastChoiceStoryIndex = -1;
+        lastChoiceTextIndex = -1;
+
+        // Story の isUsed をリセット
+        foreach (var data in storyDatas)
+        {
+            foreach (var story in data.stories)
+            {
+                story.isUsed = false;
+            }
+        }
+    }
+
+
     void Start()
     {
         endingUI.SetActive(false);
 
-        if (!isEndingScene)
+        if (NewGameLoader.isNewGame)
         {
-            // インゲームの場合だけ index を使う
-            if (lastChoiceStoryIndex >= 0 && lastChoiceTextIndex >= 0)
-            {
-                LoadStory(lastChoiceStoryIndex, lastChoiceTextIndex);
-                return;
-            }
+            ResetAllStoryData();
+            AffectionManager.Instance.ResetAll();
+            NewGameLoader.isNewGame = false;
+
+            LoadStory(0, 0);
+            return;
         }
 
-        // エンディング or 初回
+        // ▼ リトライの場合は index を使う
+        if (!isEndingScene &&
+            lastChoiceStoryIndex >= 0 &&
+            lastChoiceTextIndex >= 0)
+        {
+            LoadStory(lastChoiceStoryIndex, lastChoiceTextIndex);
+            return;
+        }
+
+        // 通常開始
         LoadStory(0, 0);
+
     }
 
 
 
-void Update()
+    void Update()
     {
         // 選択肢が無いときだけクリックで進む
         if (!choiceButton1.gameObject.activeSelf && !choiceButton2.gameObject.activeSelf)

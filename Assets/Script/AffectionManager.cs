@@ -18,6 +18,14 @@ public class AffectionManager : MonoBehaviour
         affectionDict[CharacterID.CharacterA] = 50;   // ← A の初期値
         affectionDict[CharacterID.CharacterB] = 99;  // ← B の初期値
     }
+    public void ResetAll()
+    {
+        // キャラAとBの好感度を初期に戻す
+        affectionDict[CharacterID.CharacterA] = 50;
+        affectionDict[CharacterID.CharacterB] = 99;
+    }
+
+
 
 
     // 好感度変化
