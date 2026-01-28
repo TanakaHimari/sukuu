@@ -11,6 +11,8 @@ using System.Collections.Generic;
 public class StoryManager : MonoBehaviour
 {
 
+  
+
     public static int lastChoiceStoryIndex = -1;
     public static int lastChoiceTextIndex = -1;
     public GameObject endingUI;
@@ -212,18 +214,29 @@ public class StoryManager : MonoBehaviour
 
     private void GoToNextByClick()
     {
-        int nextIndex = currentStory.CommonIndex;
-
-        if (nextIndex != -1)
+        // ▼ 好感度分岐チェック
+        foreach (var branch in currentStory.affectionBranches)
         {
-            LoadStory(storyIndex, nextIndex);
+            int current = AffectionManager.Instance.GetAffection(branch.targetCharacter);
+            if (current >= branch.threshold)
+            {
+                LoadStory(storyIndex, branch.nextIndex);
+                return;
+            }
         }
+
+        // ▼ 通常の共通分岐
+        if (currentStory.CommonIndex != -1)
+        {
+            LoadStory(storyIndex, currentStory.CommonIndex);
+        }
+
     }
 
 
 
 
-void ResetChoiceButtonColors()
+    void ResetChoiceButtonColors()
     {
         choiceButton1.colors = defaultColor1;
         choiceButton2.colors = defaultColor2;

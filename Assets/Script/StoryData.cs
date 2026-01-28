@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static Story;
 
 //ヒロインの背景か親友の背景か
 public enum BackgroundType
@@ -7,6 +8,15 @@ public enum BackgroundType
     Friend,
     Heroine
 }
+
+// ▼ 好感度タグ
+public enum CharacterID
+{ 
+    None,
+    CharacterA, 
+    CharacterB 
+}
+
 
 
 [CreateAssetMenu(fileName = "New StoryData", menuName = "Story/StoryData")]
@@ -17,6 +27,15 @@ public class StoryData : ScriptableObject
 
  
 }
+
+[System.Serializable]
+public class AffectionBranch
+{
+    public CharacterID targetCharacter; // 誰の好感度を見るか
+    public int threshold;               // 何以上なら分岐するか
+    public int nextIndex;               // その場合の次の Story
+}
+
 
 
 
@@ -55,9 +74,11 @@ public class Story
     // ▼ 共通会話に戻る Story のインデックス（必要なら使用）
     public int CommonIndex;
 
-    // ▼ 好感度タグ
-    public enum CharacterID { None, CharacterA, CharacterB }
+ 
     public enum AffectionTag { None, Increase, Decrease, Keep }
+
+    public List<AffectionBranch> affectionBranches = new List<AffectionBranch>();
+
 
     [System.Serializable]
     public class AffectionEffect
