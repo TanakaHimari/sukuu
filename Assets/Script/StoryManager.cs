@@ -246,7 +246,18 @@ void ResetChoiceButtonColors()
         SetSpeaker(currentStory.speaker);
 
         // ▼ 立ち絵・テキスト・キャラ名
-        characterImage.sprite = currentStory.CharacterImage;
+        // ▼ 立ち絵
+        if (currentStory.CharacterImage != null)
+        {
+            characterImage.gameObject.SetActive(true);
+            characterImage.sprite = currentStory.CharacterImage;
+        }
+        else
+        {
+            // ★ 画像が無いときは非表示（モノローグ用）
+            characterImage.gameObject.SetActive(false);
+        }
+
         storyText.text = currentStory.StoryText;
         characterNameImage.sprite = currentStory.CharacterNameImage;
 
@@ -307,6 +318,23 @@ void ResetChoiceButtonColors()
         {
             SoundManager.Instance.PlayBGM(currentStory.bgmClip);
         }
+
+        bool isMonologueEnd =
+    !isEndingScene &&   // ★ これが重要！
+    string.IsNullOrEmpty(currentStory.Choice1) &&
+    string.IsNullOrEmpty(currentStory.Choice2) &&
+    currentStory.NextIndexForChoice1 == -1 &&
+    currentStory.NextIndexForChoice2 == -1 &&
+    currentStory.CommonIndex == -1 &&
+    string.IsNullOrEmpty(currentStory.SceneForChoice1) &&
+    string.IsNullOrEmpty(currentStory.SceneForChoice2);
+
+        if (isMonologueEnd)
+        {
+            SceneManager.LoadScene("InGame");
+            return;
+        }
+
     }
 
     // ▼ 選択肢が押された時
