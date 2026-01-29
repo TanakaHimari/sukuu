@@ -52,7 +52,7 @@ public class AffectionManager : MonoBehaviour
     {
         if (affectionDict.ContainsKey(id))
         {
-            Debug.Log($"GetAffection: {id} = {affectionDict[id]}");
+         
             return affectionDict[id];
         }
         else

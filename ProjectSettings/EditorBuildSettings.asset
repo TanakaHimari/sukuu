@@ -20,6 +20,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BFF.unity
     guid: 393bd647cf14d5d4b8b864f7da91170c
+  - enabled: 1
+    path: Assets/Scenes/Hero.unity
+    guid: a70d7e75ab074a647a6f431dd57b8721
+  - enabled: 1
+    path: Assets/Scenes/Heroine.unity
+    guid: 10b5deff8d6873b46ba3d6c81eacd44d
+  - enabled: 1
+    path: Assets/Scenes/Bad.unity
+    guid: f6c9857d912a5f24696c45ed36f473df
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
