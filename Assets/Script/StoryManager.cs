@@ -151,14 +151,7 @@ public class StoryManager : MonoBehaviour
         lastChoiceStoryIndex = -1;
         lastChoiceTextIndex = -1;
 
-        // Story の isUsed をリセット
-        foreach (var data in storyDatas)
-        {
-            foreach (var story in data.stories)
-            {
-                story.isUsed = false;
-            }
-        }
+        
     }
 
 
@@ -216,9 +209,9 @@ public class StoryManager : MonoBehaviour
                 nextAction.WasPerformedThisFrame())
             {
                 isWaitingForClickAfterChoice = false;
-                GoToNextByClick();   // ← ここで好感度分岐も発動する
             }
         }
+
 
     }
 
@@ -363,8 +356,14 @@ public class StoryManager : MonoBehaviour
     }
 
     // ▼ 選択肢が押された時
-    private void OnChoiceSelected(int choice)
+   
+        private void OnChoiceSelected(int choice)
     {
+        StartCoroutine(ShowChoiceDialogue(choice));
+        choiceButton1.gameObject.SetActive(false);
+        choiceButton2.gameObject.SetActive(false);
+
+
         // ▼ 好感度変化の反映
         var effect = (choice == 1) ? currentStory.EffectForChoice1 : currentStory.EffectForChoice2;
 
@@ -373,7 +372,7 @@ public class StoryManager : MonoBehaviour
             AffectionManager.Instance.ApplyAffection(effect.targetCharacter, effect.tag);
         }
 
-        currentStory.isUsed = true;
+
 
         if (choice == 1)
         {
@@ -393,9 +392,46 @@ public class StoryManager : MonoBehaviour
         choiceButton1.gameObject.SetActive(false);
         choiceButton2.gameObject.SetActive(false);
 
-        StartCoroutine(GoToNext(choice));
+        // ★ GoToNext をここで呼ばない！
+        // StartCoroutine(GoToNext(choice)); ← 削除
+
+        // ★ ShowChoiceDialogue の中で GoToNext を呼ぶ
+        StartCoroutine(ShowChoiceDialogue(choice));
+
+
         DebugAffection();
     }
+
+    private IEnumerator ShowChoiceDialogue(int choice)
+    {
+        // まず選択肢ボタンを消す
+        choiceButton1.gameObject.SetActive(false);
+        choiceButton2.gameObject.SetActive(false);
+
+        // 選択肢専用の会話を表示
+        if (choice == 1)
+        {
+            storyText.text = currentStory.DialogueForChoice1;
+            characterNameImage.sprite = currentStory.CharacterNameImageForChoice1;
+        }
+        else
+        {
+            storyText.text = currentStory.DialogueForChoice2;
+            characterNameImage.sprite = currentStory.CharacterNameImageForChoice2;
+        }
+
+        // クリック待ち開始
+        isWaitingForClickAfterChoice = true;
+
+        // クリックされるまで待つ
+        while (isWaitingForClickAfterChoice)
+            yield return null;
+
+        // クリックされたら次へ
+        StartCoroutine(GoToNext(choice));
+
+    }
+
 
     // ▼ 好感度を確認する（AとB両方）
     private void DebugAffection()
