@@ -12,6 +12,8 @@ public class StoryManager : MonoBehaviour
 {
 
     private bool isWaitingForClickAfterChoice = false;
+    private int lastChoice = -1;
+
 
 
     public static int lastChoiceStoryIndex = -1;
@@ -187,31 +189,28 @@ public class StoryManager : MonoBehaviour
 
     void Update()
     {
-        // 選択肢が無いときだけクリックで進む
-        if (!choiceButton1.gameObject.activeSelf && !choiceButton2.gameObject.activeSelf)
-        {
-            // nextAction（キーボード）でも進む
-            if (nextAction.WasPerformedThisFrame())
-            {
-                GoToNextByClick();
-            }
-
-            // ★ マウス左クリックでも進む
-            if (Mouse.current.leftButton.wasPressedThisFrame)
-            {
-                GoToNextByClick();
-            }
-        }
-
+        // ▼ 選択肢後のクリック待ち
         if (isWaitingForClickAfterChoice)
         {
             if (Mouse.current.leftButton.wasPressedThisFrame ||
                 nextAction.WasPerformedThisFrame())
             {
                 isWaitingForClickAfterChoice = false;
+                
             }
+            return;
         }
 
+
+        // ▼ 通常のクリックで進む
+        if (!choiceButton1.gameObject.activeSelf && !choiceButton2.gameObject.activeSelf)
+        {
+            if (Mouse.current.leftButton.wasPressedThisFrame ||
+                nextAction.WasPerformedThisFrame())
+            {
+                GoToNextByClick();
+            }
+        }
 
     }
 
@@ -251,7 +250,8 @@ public class StoryManager : MonoBehaviour
     public void LoadStory(int sIndex, int tIndex)
     {Debug.Log($"LOAD: sIndex={sIndex}, tIndex={tIndex}");
 
- 
+        isWaitingForClickAfterChoice = false;  // ← これを追加！
+
         ResetChoiceButtonColors();
 
         storyIndex = sIndex;
@@ -357,9 +357,12 @@ public class StoryManager : MonoBehaviour
 
     // ▼ 選択肢が押された時
    
+
         private void OnChoiceSelected(int choice)
     {
-        StartCoroutine(ShowChoiceDialogue(choice));
+        lastChoice = choice;   // ← これが必要
+
+        //StartCoroutine(ShowChoiceDialogue(choice));
         choiceButton1.gameObject.SetActive(false);
         choiceButton2.gameObject.SetActive(false);
 
@@ -456,17 +459,22 @@ public class StoryManager : MonoBehaviour
 
         //yield return new WaitForSeconds(2f);
 
-        // ▼ シーン遷移が指定されている場合はそちらへ
-        if (choice == 1 && !string.IsNullOrEmpty(currentStory.SceneForChoice1))
+        // ▼ シーン遷移は「選択肢がある時だけ」有効
+        if (!string.IsNullOrEmpty(currentStory.Choice1) ||
+            !string.IsNullOrEmpty(currentStory.Choice2))
         {
-            SceneManager.LoadScene(currentStory.SceneForChoice1);
-            yield break;
+            if (choice == 1 && !string.IsNullOrEmpty(currentStory.SceneForChoice1))
+            {
+                SceneManager.LoadScene(currentStory.SceneForChoice1);
+                yield break;
+            }
+            else if (choice == 2 && !string.IsNullOrEmpty(currentStory.SceneForChoice2))
+            {
+                SceneManager.LoadScene(currentStory.SceneForChoice2);
+                yield break;
+            }
         }
-        else if (choice == 2 && !string.IsNullOrEmpty(currentStory.SceneForChoice2))
-        {
-            SceneManager.LoadScene(currentStory.SceneForChoice2);
-            yield break;
-        }
+
 
         // ▼ 通常のストーリー分岐
         int nextIndex = -1;
@@ -479,7 +487,7 @@ public class StoryManager : MonoBehaviour
         if (nextIndex != -1)
             LoadStory(storyIndex, nextIndex);
 
-        isWaitingForClickAfterChoice = true;
+        //isWaitingForClickAfterChoice = true;
 
     }
 
