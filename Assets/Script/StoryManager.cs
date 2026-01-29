@@ -11,7 +11,8 @@ using System.Collections.Generic;
 public class StoryManager : MonoBehaviour
 {
 
-  
+    private bool isWaitingForClickAfterChoice = false;
+
 
     public static int lastChoiceStoryIndex = -1;
     public static int lastChoiceTextIndex = -1;
@@ -208,6 +209,17 @@ public class StoryManager : MonoBehaviour
                 GoToNextByClick();
             }
         }
+
+        if (isWaitingForClickAfterChoice)
+        {
+            if (Mouse.current.leftButton.wasPressedThisFrame ||
+                nextAction.WasPerformedThisFrame())
+            {
+                isWaitingForClickAfterChoice = false;
+                GoToNextByClick();   // ← ここで好感度分岐も発動する
+            }
+        }
+
     }
 
 
@@ -406,7 +418,7 @@ public class StoryManager : MonoBehaviour
 
 
 
-        yield return new WaitForSeconds(2f);
+        //yield return new WaitForSeconds(2f);
 
         // ▼ シーン遷移が指定されている場合はそちらへ
         if (choice == 1 && !string.IsNullOrEmpty(currentStory.SceneForChoice1))
@@ -430,6 +442,9 @@ public class StoryManager : MonoBehaviour
 
         if (nextIndex != -1)
             LoadStory(storyIndex, nextIndex);
+
+        isWaitingForClickAfterChoice = true;
+
     }
 
 
