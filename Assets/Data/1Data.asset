@@ -1418,7 +1418,7 @@ MonoBehaviour:
       tag: 1
     SceneForChoice1: 
     SceneForChoice2: 
-  - bgmClip: {fileID: 8300000, guid: 4a22e9db500359743bd37bc2a49114e0, type: 3}
+  - bgmClip: {fileID: 0}
     backgroundType: 1
     CharacterImage: {fileID: 21300000, guid: 7408988dfd3d070439d3850a3cd33243, type: 3}
     CharacterNameImage: {fileID: 21300000, guid: 6a9f940ad8f47134c8779db9fc67ee3a, type: 3}
