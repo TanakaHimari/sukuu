@@ -593,6 +593,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2856405021316142977, guid: 0d73e204f1a867e49af404b6a5e45de8, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 790
+      objectReference: {fileID: 0}
+    - target: {fileID: 2856405021316142977, guid: 0d73e204f1a867e49af404b6a5e45de8, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 2951295590413041315, guid: 0d73e204f1a867e49af404b6a5e45de8, type: 3}
       propertyPath: m_Camera
       value: 

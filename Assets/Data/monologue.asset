@@ -28,6 +28,7 @@ MonoBehaviour:
     NextIndexForChoice1: -1
     NextIndexForChoice2: -1
     CommonIndex: 1
+    affectionBranches: []
     EffectForChoice1:
       targetCharacter: 0
       tag: 0
@@ -52,6 +53,7 @@ MonoBehaviour:
     NextIndexForChoice1: -1
     NextIndexForChoice2: -1
     CommonIndex: 2
+    affectionBranches: []
     EffectForChoice1:
       targetCharacter: 0
       tag: 0
@@ -63,7 +65,7 @@ MonoBehaviour:
     isUsed: 0
   - bgmClip: {fileID: 0}
     backgroundType: 1
-    CharacterImage: {fileID: -5796370749129237862, guid: 932051320e79fbb46a28d36ab85ce860, type: 3}
+    CharacterImage: {fileID: 21300000, guid: 932051320e79fbb46a28d36ab85ce860, type: 3}
     CharacterNameImage: {fileID: 21300000, guid: 6a9f940ad8f47134c8779db9fc67ee3a, type: 3}
     speaker: 0
     StoryText: "\u3053\u306E\u75C5\u9662\u306B\u306F\u5E7C\u99B4\u67D3\u306E\u7D14\u604B(\u3059\u307F\u308C)\u3068\u3044\u3046\u5C11\u5973\u304C\u3044\u308B\u3002\n\u75C5\u6C17\u304C\u6CBB\u3089\u306A\u3044\u70BA\u3001\u305A\u3063\u3068\u5C0F\u5150\u75C5\u68DF\u306B\u3044\u308B\u3089\u3057\u3044\u3002"
@@ -76,6 +78,7 @@ MonoBehaviour:
     NextIndexForChoice1: -1
     NextIndexForChoice2: -1
     CommonIndex: 3
+    affectionBranches: []
     EffectForChoice1:
       targetCharacter: 0
       tag: 0
@@ -100,6 +103,7 @@ MonoBehaviour:
     NextIndexForChoice1: -1
     NextIndexForChoice2: -1
     CommonIndex: 4
+    affectionBranches: []
     EffectForChoice1:
       targetCharacter: 0
       tag: 0
@@ -124,6 +128,7 @@ MonoBehaviour:
     NextIndexForChoice1: -1
     NextIndexForChoice2: -1
     CommonIndex: 5
+    affectionBranches: []
     EffectForChoice1:
       targetCharacter: 0
       tag: 0
@@ -148,6 +153,7 @@ MonoBehaviour:
     NextIndexForChoice1: -1
     NextIndexForChoice2: -1
     CommonIndex: 6
+    affectionBranches: []
     EffectForChoice1:
       targetCharacter: 0
       tag: 0
@@ -159,7 +165,7 @@ MonoBehaviour:
     isUsed: 0
   - bgmClip: {fileID: 8300000, guid: ddad703cb996eb845bbad9af5bd696a5, type: 3}
     backgroundType: 0
-    CharacterImage: {fileID: -997070475312469556, guid: ca94086e9728dfa4a983192c99dcb7ec, type: 3}
+    CharacterImage: {fileID: 21300000, guid: ca94086e9728dfa4a983192c99dcb7ec, type: 3}
     CharacterNameImage: {fileID: 21300000, guid: d454ddcd6e503d947b57cc9db2bbbc8c, type: 3}
     speaker: 2
     StoryText: "\u3078\u3047\u3001\u5E7C\u99B4\u67D3\u306B\u6570\u5E74\u3076\u308A\u306E\u518D\u958B\u306D\u3047...\n\u5FD8\u308C\u3089\u308C\u3066\u308B\u3093\u3058\u3083\u306D\u3048\u306E\uFF1F"
@@ -172,6 +178,7 @@ MonoBehaviour:
     NextIndexForChoice1: -1
     NextIndexForChoice2: -1
     CommonIndex: 7
+    affectionBranches: []
     EffectForChoice1:
       targetCharacter: 0
       tag: 0
@@ -183,7 +190,7 @@ MonoBehaviour:
     isUsed: 0
   - bgmClip: {fileID: 0}
     backgroundType: 0
-    CharacterImage: {fileID: -997070475312469556, guid: ca94086e9728dfa4a983192c99dcb7ec, type: 3}
+    CharacterImage: {fileID: 21300000, guid: 6d730f39ba934074294ba805a66b67d6, type: 3}
     CharacterNameImage: {fileID: 21300000, guid: d454ddcd6e503d947b57cc9db2bbbc8c, type: 3}
     speaker: 2
     StoryText: "\u8CB4\u91CD\u306A\u590F\u4F11\u307F\u3092\u6570\u5E74\u4ED8\u304D\u5408\u3044\u306A\u304B\u3063\u305F\n\u4EBA\u9593\u306B\u4F7F\u3046\u306A\u3093\u3066\u3082\u3063\u305F\u3044\u306A\u304F\u306D\uFF1F"
@@ -196,6 +203,7 @@ MonoBehaviour:
     NextIndexForChoice1: -1
     NextIndexForChoice2: -1
     CommonIndex: 8
+    affectionBranches: []
     EffectForChoice1:
       targetCharacter: 0
       tag: 0
@@ -220,6 +228,7 @@ MonoBehaviour:
     NextIndexForChoice1: -1
     NextIndexForChoice2: -1
     CommonIndex: 9
+    affectionBranches: []
     EffectForChoice1:
       targetCharacter: 0
       tag: 0
@@ -244,6 +253,7 @@ MonoBehaviour:
     NextIndexForChoice1: -1
     NextIndexForChoice2: -1
     CommonIndex: 10
+    affectionBranches: []
     EffectForChoice1:
       targetCharacter: 0
       tag: 0
@@ -268,6 +278,7 @@ MonoBehaviour:
     NextIndexForChoice1: -1
     NextIndexForChoice2: -1
     CommonIndex: -1
+    affectionBranches: []
     EffectForChoice1:
       targetCharacter: 0
       tag: 0

@@ -94,6 +94,4 @@ public class Story
     public string SceneForChoice2;
 
 
-    // ▼ 使用済みフラグ
-    public bool isUsed = false;
 }

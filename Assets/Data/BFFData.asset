@@ -15,7 +15,7 @@ MonoBehaviour:
   stories:
   - bgmClip: {fileID: 8300000, guid: ddad703cb996eb845bbad9af5bd696a5, type: 3}
     backgroundType: 0
-    CharacterImage: {fileID: -3953263413475941203, guid: 6d730f39ba934074294ba805a66b67d6, type: 3}
+    CharacterImage: {fileID: 21300000, guid: 6d730f39ba934074294ba805a66b67d6, type: 3}
     CharacterNameImage: {fileID: 21300000, guid: d454ddcd6e503d947b57cc9db2bbbc8c, type: 3}
     speaker: 2
     StoryText: "\u6700\u8FD1\u53F6\u604B\u304C\u6C17\u304C\u4ED8\u3051\u3070\u305D\u3070\u306B\u3044\u308B\u3002\n\u5B66\u6821\u3067\u3082\u305D\u3046\u3060\u304C\u6700\u8FD1\u306F\u75C5\u9662\u5E30\u308A\u306B\u904A\u3076\u3053\u3068\u304C\u591A\u304F\u306A\u3063\u305F\u3002"
@@ -28,6 +28,7 @@ MonoBehaviour:
     NextIndexForChoice1: -1
     NextIndexForChoice2: -1
     CommonIndex: 1
+    affectionBranches: []
     EffectForChoice1:
       targetCharacter: 0
       tag: 0
@@ -39,7 +40,7 @@ MonoBehaviour:
     isUsed: 0
   - bgmClip: {fileID: 0}
     backgroundType: 0
-    CharacterImage: {fileID: -3953263413475941203, guid: 6d730f39ba934074294ba805a66b67d6, type: 3}
+    CharacterImage: {fileID: 21300000, guid: 1d3e9bb871a627046907398aa9514ca0, type: 3}
     CharacterNameImage: {fileID: 21300000, guid: 6a9f940ad8f47134c8779db9fc67ee3a, type: 3}
     speaker: 2
     StoryText: "\u585E\u304E\u3053\u3093\u3067\u3044\u3066\u3042\u307E\u308A\u7B11\u308F\u306A\u3044\u7D14\u604B\u3068\u9055\u3044\u5F7C\u306F\u3088\u304F\u7B11\u3046\u3002\n\u5F7C\u306E\u508D\u306F\u5FC3\u5730\u304C\u3044\u3044\u3002\r\n"
@@ -52,6 +53,7 @@ MonoBehaviour:
     NextIndexForChoice1: -1
     NextIndexForChoice2: -1
     CommonIndex: 2
+    affectionBranches: []
     EffectForChoice1:
       targetCharacter: 0
       tag: 0
@@ -63,7 +65,7 @@ MonoBehaviour:
     isUsed: 0
   - bgmClip: {fileID: 0}
     backgroundType: 0
-    CharacterImage: {fileID: -9148801718462313048, guid: 1d3e9bb871a627046907398aa9514ca0, type: 3}
+    CharacterImage: {fileID: 21300000, guid: 1d3e9bb871a627046907398aa9514ca0, type: 3}
     CharacterNameImage: {fileID: 21300000, guid: d454ddcd6e503d947b57cc9db2bbbc8c, type: 3}
     speaker: 2
     StoryText: "\u306A\u3041\u306A\u3041\uFF01\u4ECA\u5EA6\u821E\u6D5C\u884C\u3053\u3046\u305C\uFF01\n\u5236\u670D\u30C7\u30FC\u30C8\u3068\u304B\u3084\u308A\u305F\u304F\u306D\uFF1F\r\n"
@@ -76,6 +78,7 @@ MonoBehaviour:
     NextIndexForChoice1: -1
     NextIndexForChoice2: -1
     CommonIndex: 3
+    affectionBranches: []
     EffectForChoice1:
       targetCharacter: 0
       tag: 0
@@ -87,7 +90,7 @@ MonoBehaviour:
     isUsed: 0
   - bgmClip: {fileID: 0}
     backgroundType: 0
-    CharacterImage: {fileID: -9148801718462313048, guid: 1d3e9bb871a627046907398aa9514ca0, type: 3}
+    CharacterImage: {fileID: 21300000, guid: 1d3e9bb871a627046907398aa9514ca0, type: 3}
     CharacterNameImage: {fileID: 21300000, guid: d454ddcd6e503d947b57cc9db2bbbc8c, type: 3}
     speaker: 2
     StoryText: "\u6700\u8FD1\u306F\u540C\u6027\u540C\u58EB\u304C\u904A\u3076\u969B\u306B\u3082\u4E8C\u4EBA\u306A\u3089\u30C7\u30FC\u30C8\u3068\u79F0\u3059\u308B\u3089\u3057\u3044\u3002\n\u5C11\u3057\u6C17\u6065\u305A\u304B\u3057\u3055\u3092\u611F\u3058\u308B\u3082\u306E\u306E\n\u7B11\u9854\u306E\u5F7C\u3092\u898B\u3066\u6C17\u306B\u3057\u306A\u3044\u3053\u3068\u306B\u3057\u305F\u3002\r\n"
@@ -100,6 +103,7 @@ MonoBehaviour:
     NextIndexForChoice1: -1
     NextIndexForChoice2: -1
     CommonIndex: 4
+    affectionBranches: []
     EffectForChoice1:
       targetCharacter: 0
       tag: 0
@@ -111,7 +115,7 @@ MonoBehaviour:
     isUsed: 0
   - bgmClip: {fileID: 0}
     backgroundType: 0
-    CharacterImage: {fileID: -9148801718462313048, guid: 1d3e9bb871a627046907398aa9514ca0, type: 3}
+    CharacterImage: {fileID: 21300000, guid: 1d3e9bb871a627046907398aa9514ca0, type: 3}
     CharacterNameImage: {fileID: 21300000, guid: d454ddcd6e503d947b57cc9db2bbbc8c, type: 3}
     speaker: 2
     StoryText: "\u30AB\u30EC\u30F3\u30C0\u30FC\u3092\u958B\u304D\u3001\u571F\u66DC\u306E\u75C5\u9662\u306E\u4E88\u5B9A\u3092\u5922\u306E\u56FD\u306B\u66F8\u304D\u63DB\u3048\u305F\u3002\r\n"
@@ -124,6 +128,7 @@ MonoBehaviour:
     NextIndexForChoice1: -1
     NextIndexForChoice2: -1
     CommonIndex: -1
+    affectionBranches: []
     EffectForChoice1:
       targetCharacter: 0
       tag: 0
