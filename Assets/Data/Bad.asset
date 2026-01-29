@@ -37,8 +37,7 @@ MonoBehaviour:
       tag: 0
     SceneForChoice1: 
     SceneForChoice2: 
-    isUsed: 0
-  - bgmClip: {fileID: 8300000, guid: 4a22e9db500359743bd37bc2a49114e0, type: 3}
+  - bgmClip: {fileID: 0}
     backgroundType: 1
     CharacterImage: {fileID: 0}
     CharacterNameImage: {fileID: 21300000, guid: 6a9f940ad8f47134c8779db9fc67ee3a, type: 3}
@@ -62,7 +61,6 @@ MonoBehaviour:
       tag: 0
     SceneForChoice1: 
     SceneForChoice2: 
-    isUsed: 0
   - bgmClip: {fileID: 8300000, guid: ddad703cb996eb845bbad9af5bd696a5, type: 3}
     backgroundType: 0
     CharacterImage: {fileID: 0}
@@ -87,8 +85,7 @@ MonoBehaviour:
       tag: 0
     SceneForChoice1: 
     SceneForChoice2: 
-    isUsed: 0
-  - bgmClip: {fileID: 8300000, guid: ddad703cb996eb845bbad9af5bd696a5, type: 3}
+  - bgmClip: {fileID: 0}
     backgroundType: 0
     CharacterImage: {fileID: 0}
     CharacterNameImage: {fileID: 21300000, guid: 6a9f940ad8f47134c8779db9fc67ee3a, type: 3}
@@ -112,8 +109,7 @@ MonoBehaviour:
       tag: 0
     SceneForChoice1: 
     SceneForChoice2: 
-    isUsed: 0
-  - bgmClip: {fileID: 8300000, guid: ddad703cb996eb845bbad9af5bd696a5, type: 3}
+  - bgmClip: {fileID: 0}
     backgroundType: 0
     CharacterImage: {fileID: 0}
     CharacterNameImage: {fileID: 21300000, guid: 6a9f940ad8f47134c8779db9fc67ee3a, type: 3}
@@ -137,4 +133,3 @@ MonoBehaviour:
       tag: 0
     SceneForChoice1: 
     SceneForChoice2: 
-    isUsed: 0

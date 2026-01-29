@@ -1312,7 +1312,7 @@ MonoBehaviour:
     SceneForChoice2: 
   - bgmClip: {fileID: 0}
     backgroundType: 0
-    CharacterImage: {fileID: -1081435818509234262, guid: cca7881994612b94ba0ef2fb89fad86b, type: 3}
+    CharacterImage: {fileID: 21300000, guid: cca7881994612b94ba0ef2fb89fad86b, type: 3}
     CharacterNameImage: {fileID: 21300000, guid: d454ddcd6e503d947b57cc9db2bbbc8c, type: 3}
     speaker: 2
     StoryText: "...\u3084\u3063\u3071\u308A\u7537\u306E\u4FFA\u3058\u3083\u30C0\u30E1\uFF1F"

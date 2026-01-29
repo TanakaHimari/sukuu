@@ -233,6 +233,22 @@ public class StoryManager : MonoBehaviour
         if (currentStory.CommonIndex != -1)
         {
             LoadStory(storyIndex, currentStory.CommonIndex);
+            return;
+        }
+        bool isMonologueEnd =
+  !isEndingScene &&   // ★ これが重要！
+  string.IsNullOrEmpty(currentStory.Choice1) &&
+  string.IsNullOrEmpty(currentStory.Choice2) &&
+  currentStory.NextIndexForChoice1 == -1 &&
+  currentStory.NextIndexForChoice2 == -1 &&
+  currentStory.CommonIndex == -1 &&
+  string.IsNullOrEmpty(currentStory.SceneForChoice1) &&
+  string.IsNullOrEmpty(currentStory.SceneForChoice2);
+
+        if (isMonologueEnd)
+        {
+            SceneManager.LoadScene("InGame");
+            return;
         }
 
     }
@@ -337,22 +353,7 @@ public class StoryManager : MonoBehaviour
             SoundManager.Instance.PlayBGM(currentStory.bgmClip);
         }
 
-        bool isMonologueEnd =
-    !isEndingScene &&   // ★ これが重要！
-    string.IsNullOrEmpty(currentStory.Choice1) &&
-    string.IsNullOrEmpty(currentStory.Choice2) &&
-    currentStory.NextIndexForChoice1 == -1 &&
-    currentStory.NextIndexForChoice2 == -1 &&
-    currentStory.CommonIndex == -1 &&
-    string.IsNullOrEmpty(currentStory.SceneForChoice1) &&
-    string.IsNullOrEmpty(currentStory.SceneForChoice2);
-
-        if (isMonologueEnd)
-        {
-            SceneManager.LoadScene("InGame");
-            return;
-        }
-
+      
     }
 
     // ▼ 選択肢が押された時
