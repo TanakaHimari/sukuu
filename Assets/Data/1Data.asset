@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 1Data
   m_EditorClassIdentifier: Assembly-CSharp::StoryData
   stories:
-  - bgmClip: {fileID: 8300000, guid: 4a22e9db500359743bd37bc2a49114e0, type: 3}
+  - bgmClip: {fileID: 0}
     backgroundType: 1
     CharacterImage: {fileID: 21300000, guid: b98d6cdfd88e17a4ba5cce57fa26f2a6, type: 3}
     CharacterNameImage: {fileID: 21300000, guid: 6a9f940ad8f47134c8779db9fc67ee3a, type: 3}
@@ -1337,7 +1337,34 @@ MonoBehaviour:
       tag: 1
     SceneForChoice1: 
     SceneForChoice2: 
-  - bgmClip: {fileID: 0}
+  - bgmClip: {fileID: 8300000, guid: 4a22e9db500359743bd37bc2a49114e0, type: 3}
+    backgroundType: 1
+    CharacterImage: {fileID: 0}
+    CharacterNameImage: {fileID: 21300000, guid: 6a9f940ad8f47134c8779db9fc67ee3a, type: 3}
+    speaker: 1
+    StoryText: "\u679C\u305F\u3057\u3066\u5F7C\u5973\u306F\u3053\u308C\u307B\u3069\u81EA\u5206\u306E\u3053\u3068\u304C\u597D\u304D\u3060\u308D\u3046\u304B\u3002"
+    Choice1: 
+    Choice2: 
+    DialogueForChoice1: 
+    DialogueForChoice2: 
+    CharacterNameImageForChoice1: {fileID: 21300000, guid: 6a9f940ad8f47134c8779db9fc67ee3a, type: 3}
+    CharacterNameImageForChoice2: {fileID: 21300000, guid: 6a9f940ad8f47134c8779db9fc67ee3a, type: 3}
+    NextIndexForChoice1: -1
+    NextIndexForChoice2: -1
+    CommonIndex: 57
+    affectionBranches:
+    - targetCharacter: 1
+      threshold: 55
+      nextIndex: 36
+    EffectForChoice1:
+      targetCharacter: 2
+      tag: 1
+    EffectForChoice2:
+      targetCharacter: 1
+      tag: 1
+    SceneForChoice1: Heroine
+    SceneForChoice2: Bad
+  - bgmClip: {fileID: 8300000, guid: ddad703cb996eb845bbad9af5bd696a5, type: 3}
     backgroundType: 0
     CharacterImage: {fileID: 21300000, guid: cca7881994612b94ba0ef2fb89fad86b, type: 3}
     CharacterNameImage: {fileID: 21300000, guid: 6a9f940ad8f47134c8779db9fc67ee3a, type: 3}
@@ -1350,7 +1377,7 @@ MonoBehaviour:
     CharacterNameImageForChoice1: {fileID: 21300000, guid: 6a9f940ad8f47134c8779db9fc67ee3a, type: 3}
     CharacterNameImageForChoice2: {fileID: 21300000, guid: 6a9f940ad8f47134c8779db9fc67ee3a, type: 3}
     NextIndexForChoice1: -1
-    NextIndexForChoice2: 54
+    NextIndexForChoice2: 55
     CommonIndex: -1
     affectionBranches:
     - targetCharacter: 1

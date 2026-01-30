@@ -26,6 +26,9 @@ public class StoryManager : MonoBehaviour
     private GameObject currentBackground;
     public Transform backgroundParentTransform;
 
+    private GameObject friendBG;
+    private GameObject heroineBG;
+
     [Header("êeóFÇÃîwåi")]public GameObject friendBackgroundPrefab;
     [Header("ÉqÉçÉCÉìÇÃîwåi")] public GameObject heroineBackgroundPrefab;
 
@@ -120,25 +123,9 @@ public class StoryManager : MonoBehaviour
 
     private void SetBackground(Story story)
     {
-        if (currentBackground != null)
-            Destroy(currentBackground);
+        friendBG.SetActive(story.backgroundType == BackgroundType.Friend);
+        heroineBG.SetActive(story.backgroundType == BackgroundType.Heroine);
 
-        GameObject prefabToUse = null;
-
-        switch (story.backgroundType)
-        {
-            case BackgroundType.Friend:
-                prefabToUse = friendBackgroundPrefab;
-                break;
-            case BackgroundType.Heroine:
-                prefabToUse = heroineBackgroundPrefab;
-                break;
-        }
-
-        if (prefabToUse != null)
-        {
-            currentBackground = Instantiate(prefabToUse, backgroundParentTransform);
-        }
     }
 
 
@@ -159,6 +146,13 @@ public class StoryManager : MonoBehaviour
 
     void Start()
     {
+
+        friendBG = Instantiate(friendBackgroundPrefab, backgroundParentTransform);
+        heroineBG = Instantiate(heroineBackgroundPrefab, backgroundParentTransform);
+
+        friendBG.SetActive(false);
+        heroineBG.SetActive(false);
+
         endingUI.SetActive(false);
 
         if (NewGameLoader.isNewGame)

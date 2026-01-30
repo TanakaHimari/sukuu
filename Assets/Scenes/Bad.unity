@@ -557,7 +557,7 @@ PrefabInstance:
     - target: {fileID: 3397122299873690858, guid: 203de0a473ffea342be0453030ba8454, type: 3}
       propertyPath: heroineBackgroundPrefab
       value: 
-      objectReference: {fileID: 5016154438726634072, guid: 1cf92bb6c429e9e4191150b06e070358, type: 3}
+      objectReference: {fileID: 8256251998980013835, guid: 35ebde714e668d945988839d2ccb8585, type: 3}
     - target: {fileID: 3397122299873690858, guid: 203de0a473ffea342be0453030ba8454, type: 3}
       propertyPath: 'storyDatas.Array.data[0]'
       value: 
